@@ -22,6 +22,8 @@ target/
 docker-compose.yml
 Dockerfile
 
+.DS_Store
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
