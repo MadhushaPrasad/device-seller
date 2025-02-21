@@ -10,6 +10,5 @@ public interface DeviceService {
 
     List<Device> findAllDevices();
 
-    @Transactional
     void deleteDevice(Long id);
 }

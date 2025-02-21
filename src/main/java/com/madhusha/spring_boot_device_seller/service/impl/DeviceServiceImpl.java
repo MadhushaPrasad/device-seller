@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 
-    private DeviceRepository deviceRepository;
+    private final DeviceRepository deviceRepository;
 
     public DeviceServiceImpl(DeviceRepository deviceRepository) {
         this.deviceRepository = deviceRepository;
@@ -31,7 +31,6 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRepository.findAll();
     }
 
-    @Transactional
     @Override
     public void deleteDevice(Long id) {
         Device device = deviceRepository.findById(id).orElse(null);
