@@ -2,9 +2,6 @@ package com.madhusha.spring_boot_device_seller.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalTime;
 
 @Data // This annotation is used to generate getters and setters
