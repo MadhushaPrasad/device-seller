@@ -2,6 +2,8 @@ package com.madhusha.spring_boot_device_seller.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Data // This annotation is used to generate getters and setters
@@ -22,7 +24,7 @@ public class User {
     private String name;
 
     @Column(name = "create_time", nullable = false) // This annotation is used to specify the column name in the database
-    private LocalTime createTime;
+    private LocalDateTime createTime;
 
     //role
     @Enumerated(EnumType.STRING) // This annotation is used to specify the enumerated type
