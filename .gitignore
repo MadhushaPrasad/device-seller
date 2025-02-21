@@ -19,9 +19,6 @@ target/
 *.iml
 *.ipr
 
-docker-compose.yml
-Dockerfile
-
 .DS_Store
 
 ### NetBeans ###
