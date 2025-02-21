@@ -3,6 +3,7 @@ package com.madhusha.spring_boot_device_seller.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -28,4 +29,7 @@ public class Device {
     @Enumerated(EnumType.STRING)
     @Column(name = "device_type", nullable = false)
     private DeviceType deviceType;
+
+    @OneToMany(mappedBy = "device", fetch = FetchType.LAZY)
+    private Set<Purchase> purchaseList;
 }
