@@ -4,11 +4,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-@Data // This annotation is used to generate getters and setters
 @Entity // This annotation is used to specify the class is an entity
 @Table(name = "users") // This annotation is used to specify the table name in the database
+@Data // This annotation is used to generate getters and setters
 public class User {
     @Id // This annotation is used to specify the primary key of an entity
     @GeneratedValue(strategy = GenerationType.IDENTITY)// This annotation is used to specify the primary key generation strategy
