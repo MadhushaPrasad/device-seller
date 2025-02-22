@@ -1,5 +1,8 @@
 package com.madhusha.spring_boot_device_seller.security;
 
+import com.madhusha.spring_boot_device_seller.security.jwt.JWTAuthorizationFilter;
+import com.madhusha.spring_boot_device_seller.security.jwt.JwtProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,6 +25,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
+
 
     public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
         this.customUserDetailsService = customUserDetailsService;
@@ -37,6 +42,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/authentication/**").permitAll() // Allow authentication routes
                         .anyRequest().authenticated() // Secure other routes
                 );
+
+        http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -64,5 +71,11 @@ public class SecurityConfig {
                         .allowedMethods("*");
             }
         };
+    }
+
+    // why don't we describe this as a component?, because of scope.
+    @Bean
+    public JWTAuthorizationFilter jwtAuthorizationFilter() {
+        return new JWTAuthorizationFilter();
     }
 }
