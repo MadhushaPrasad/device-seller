@@ -2,8 +2,6 @@ package com.madhusha.spring_boot_device_seller.utils;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.security.PublicKey;
-
 public class SecurityUtils {
     public static final String ROLE_PREFIX = "ROLE_";
 
