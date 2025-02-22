@@ -4,7 +4,6 @@ package com.madhusha.spring_boot_device_seller.security;
 import com.madhusha.spring_boot_device_seller.model.User;
 import com.madhusha.spring_boot_device_seller.service.UserService;
 import com.madhusha.spring_boot_device_seller.utils.SecurityUtils;
-import com.madhusha.spring_boot_device_seller.utils.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

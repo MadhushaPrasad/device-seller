@@ -1,4 +1,4 @@
-package com.madhusha.spring_boot_device_seller.utils;
+package com.madhusha.spring_boot_device_seller.security;
 
 import com.madhusha.spring_boot_device_seller.model.User;
 import lombok.AllArgsConstructor;
