@@ -5,6 +5,7 @@ import com.madhusha.spring_boot_device_seller.model.User;
 import com.madhusha.spring_boot_device_seller.service.UserService;
 import com.madhusha.spring_boot_device_seller.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,6 +18,7 @@ import java.util.Set;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
+    @Lazy
     private UserService userService;
 
 
