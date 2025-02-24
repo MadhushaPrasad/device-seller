@@ -1,10 +1,12 @@
 package com.madhusha.spring_boot_device_seller.security;
 
+import com.madhusha.spring_boot_device_seller.model.Role;
 import com.madhusha.spring_boot_device_seller.security.jwt.JWTAuthorizationFilter;
 import com.madhusha.spring_boot_device_seller.security.jwt.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -42,6 +44,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless sessions
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/authentication/**").permitAll() // Allow authentication routes
+                        .requestMatchers(HttpMethod.GET, "/api/devices").permitAll() // Allow GET requests to devices
+                        .requestMatchers("api/devices/**").hasRole(Role.ADMIN.name()) // Secure device routes
                         .anyRequest().authenticated() // Secure other routes
                 );
 
