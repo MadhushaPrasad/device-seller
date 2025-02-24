@@ -29,4 +29,7 @@ public class User {
     @Enumerated(EnumType.STRING) // This annotation is used to specify the enumerated type
     @Column(name = "role", nullable = false) // This annotation is used to specify the column name in the database
     private Role role;
+
+    @Transient
+    private String token;
 }
