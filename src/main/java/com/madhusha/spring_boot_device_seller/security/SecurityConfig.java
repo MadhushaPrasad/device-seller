@@ -25,10 +25,12 @@ import java.util.List;
 public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
+    private final JwtProvider jwtProvider;
 
 
-    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService,JwtProvider jwtProvider) {
         this.customUserDetailsService = customUserDetailsService;
+        this.jwtProvider = jwtProvider;
     }
 
     @Bean
@@ -43,7 +45,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // Secure other routes
                 );
 
-        http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(new JWTAuthorizationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -76,6 +78,6 @@ public class SecurityConfig {
     // why don't we describe this as a component?, because of scope.
     @Bean
     public JWTAuthorizationFilter jwtAuthorizationFilter() {
-        return new JWTAuthorizationFilter();
+        return new JWTAuthorizationFilter(jwtProvider);
     }
 }
