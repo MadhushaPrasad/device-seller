@@ -42,7 +42,7 @@ public class JwtProviderImpl implements JwtProvider {
                 .setSubject(auth.getUsername())
                 .claim("roles", authorities)
                 .claim("userId", auth.getId())
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION_IN_MS))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(JWT_EXPIRATION_IN_MS)))
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
     }
